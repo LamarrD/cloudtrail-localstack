@@ -46,6 +46,7 @@ def generate_trail_events():
     s3_client.create_bucket(Bucket=bucket_name)
     encoded_string = "Hi peeps".encode("utf-8")
     file_name = "test.txt"
+    # NOTE may need this line instead when executing in localstack
     # s3 = boto3.resource("s3", verify=False)
     s3 = boto3.resource("s3")
     s3.Bucket(bucket_name).put_object(Key=file_name, Body=encoded_string)
