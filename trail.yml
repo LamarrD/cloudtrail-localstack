@@ -1,0 +1,17 @@
+Resources:
+  TestTrail:
+    Type: AWS::CloudTrail::Trail
+    Properties:
+      IsLogging: True
+      S3BucketName: test-bucket-logging432432
+      EventSelectors:
+        - ReadWriteType: WriteOnly
+          IncludeManagementEvents: false
+          DataResources:
+            - Type: AWS::S3::Object
+              Values:
+                - arn:aws:s3
+            - Type: AWS::DynamoDB::Table
+              Values:
+                - arn:aws:dynamodb
+      TrailName: test-trail
